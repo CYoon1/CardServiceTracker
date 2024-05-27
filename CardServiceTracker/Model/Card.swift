@@ -11,10 +11,10 @@ import SwiftData
 @Model
 final class Card {
     var identifier: String
-    @Relationship(inverse: \Service.cards) var services: [Service]
+    @Relationship(inverse: \Transaction.cards) var transactions: [Transaction]
     
-    init(id: String, services: [Service]) {
+    init(id: String, transactions: [Transaction]) {
         self.identifier = id
-        self.services = services
+        self.transactions = transactions
     }
 }

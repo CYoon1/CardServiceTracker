@@ -16,5 +16,5 @@ struct CardRowView: View {
 }
 
 #Preview {
-    CardRowView(card: Card(id: "Test Card", services: []))
+    CardRowView(card: Card(id: "Test Card", transactions: []))
 }

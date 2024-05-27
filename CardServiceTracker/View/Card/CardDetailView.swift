@@ -18,5 +18,5 @@ struct CardDetailView: View {
 }
 
 #Preview {
-    CardDetailView(card: Card(id: "Test", services: []))
+    CardDetailView(card: Card(id: "Test", transactions: []))
 }

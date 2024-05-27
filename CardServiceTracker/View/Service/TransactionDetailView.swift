@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ServiceDetailView: View {
-    var service: Service
+struct TransactionDetailView: View {
+    var transaction: Transaction
     var body: some View {
         Form {
-            Text(service.identifier)
+            Text(transaction.identifier)
             List {
-                ForEach(service.cards) { card in
+                ForEach(transaction.cards) { card in
                     Text(card.identifier)
                 }
             }
@@ -22,5 +22,5 @@ struct ServiceDetailView: View {
 }
 
 #Preview {
-    ServiceDetailView(service: Service(id: "Test Service", cards: []))
+    TransactionDetailView(transaction: Transaction(id: "Test Service", cards: []))
 }

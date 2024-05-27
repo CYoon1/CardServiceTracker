@@ -15,7 +15,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Card", systemImage: "creditcard")
                     }
-                ServiceListView()
+                TransactionListView()
                     .tabItem {
                         Label("Service", systemImage: "menucard")
                     }

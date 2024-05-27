@@ -27,7 +27,7 @@ class StoredCard {
 }
 
 @Model
-final class Service {
+final class Transaction {
     var identifier: String
     var cards: [Card]
     

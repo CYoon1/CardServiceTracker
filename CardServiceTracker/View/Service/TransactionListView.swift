@@ -8,18 +8,18 @@
 import SwiftUI
 import SwiftData
 
-struct ServiceListView: View {
+struct TransactionListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var services: [Service]
+    @Query private var transactions: [Transaction]
     
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(services) { service in
+                ForEach(transactions) { transaction in
                     NavigationLink {
-                        ServiceDetailView(service: service)
+                        TransactionDetailView(transaction: transaction)
                     } label: {
-                        ServiceRowView(service: service)
+                        TransactionRowView(transaction: transaction)
                     }
                 }
 //                .onDelete(perform: deleteItems)
@@ -41,6 +41,6 @@ struct ServiceListView: View {
 }
 
 #Preview {
-    ServiceListView()
-        .modelContainer(for: Service.self, inMemory: true)
+    TransactionListView()
+        .modelContainer(for: Transaction.self, inMemory: true)
 }
