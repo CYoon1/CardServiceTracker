@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D8A11AD42C051BEA007A63EC /* TransactionAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A11AD32C051BEA007A63EC /* TransactionAddEditView.swift */; };
+		D8A11AD62C052F8D007A63EC /* CardAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */; };
 		D8BC9FB42C03964E00872540 /* CardServiceTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB32C03964E00872540 /* CardServiceTrackerApp.swift */; };
 		D8BC9FB62C03964E00872540 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB52C03964E00872540 /* ContentView.swift */; };
 		D8BC9FB82C03964E00872540 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB72C03964E00872540 /* Item.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		D8A11AD32C051BEA007A63EC /* TransactionAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAddEditView.swift; sourceTree = "<group>"; };
+		D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAddEditView.swift; sourceTree = "<group>"; };
 		D8BC9FB02C03964E00872540 /* CardServiceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardServiceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BC9FB32C03964E00872540 /* CardServiceTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardServiceTrackerApp.swift; sourceTree = "<group>"; };
 		D8BC9FB52C03964E00872540 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				D8BC9FCB2C039B0200872540 /* CardRowView.swift */,
 				D8BC9FCF2C039C2000872540 /* CardDetailView.swift */,
 				D8BC9FCD2C039B3B00872540 /* CardListView.swift */,
+				D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				D8BC9FB42C03964E00872540 /* CardServiceTrackerApp.swift in Sources */,
 				D8A11AD42C051BEA007A63EC /* TransactionAddEditView.swift in Sources */,
 				D8BC9FCE2C039B3B00872540 /* CardListView.swift in Sources */,
+				D8A11AD62C052F8D007A63EC /* CardAddEditView.swift in Sources */,
 				D8BC9FC52C03967900872540 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  TransactionAddEditView.swift
+//  CardAddEditView.swift
 //  CardServiceTracker
 //
 //  Created by Christopher Yoon on 5/27/24.
@@ -7,29 +7,29 @@
 
 import SwiftUI
 
-struct TransactionAddEditView: View {
-    @Bindable var transaction: Transaction
-    var save: (Transaction) -> ()
-    var delete: (Transaction) -> ()
+struct CardAddEditView: View {
+    @Bindable var card: Card
+    var save: (Card) -> ()
+    var delete: (Card) -> ()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         Form {
             Section {
-                TextField("Name", text: $transaction.identifier)
+                TextField("Name", text: $card.identifier)
             }
             Section {
                 List {
-                    ForEach(transaction.cards) { card in
-                        Text(card.identifier)
+                    ForEach(card.transactions) { transaction in
+                        Text(transaction.identifier)
                     }
                 }
             }
             Section {
-                Button(action: {
-                    save(transaction)
+                Button {
+                    save(card)
                     dismiss()
-                }) {
+                } label: {
                     Text("Save")
                 }
                 Button {
@@ -44,8 +44,8 @@ struct TransactionAddEditView: View {
 }
 
 #Preview {
-    let test = Transaction(id: "Test Transaction", cards: [])
+    let test = Card(id: "Test Card", transactions: [])
     return NavigationStack {
-        TransactionAddEditView(transaction: test, save: { _ in }, delete: { _ in })
+        CardAddEditView(card: test, save: { _ in }, delete: { _ in })
     }
 }
