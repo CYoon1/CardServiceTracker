@@ -33,8 +33,10 @@ struct CardListView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: {}) {
-                        Label("Add Card", systemImage: "plus")
+                    Button {
+                        showAddView = true
+                    } label: {
+                            Label("Add Card", systemImage: "plus")
                     }
                 }
             }

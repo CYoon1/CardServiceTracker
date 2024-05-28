@@ -33,12 +33,11 @@ struct TransactionListView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: {
-                        showAddView.toggle()
-                    }) {
-                        Label("Add Service", systemImage: "plus")
+                    Button {
+                        showAddView = true
+                    } label: {
+                            Label("Add Card", systemImage: "plus")
                     }
-                    
                 }
             }
         } detail: {
