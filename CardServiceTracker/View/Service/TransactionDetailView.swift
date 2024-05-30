@@ -11,10 +11,17 @@ struct TransactionDetailView: View {
     var transaction: Transaction
     var body: some View {
         Form {
-            Text(transaction.identifier)
-            List {
-                ForEach(transaction.cards) { card in
-                    Text(card.identifier)
+            Section {
+                Text(transaction.identifier)
+            }
+            Section("Cards") {
+                List {
+                    Button("Add New") {
+                        
+                    }
+                    ForEach(transaction.cards) { card in
+                        Text(card.identifier)
+                    }
                 }
             }
         }

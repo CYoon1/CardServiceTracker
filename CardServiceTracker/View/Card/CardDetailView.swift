@@ -12,7 +12,19 @@ struct CardDetailView: View {
 
     var body: some View {
         Form {
-            Text(card.identifier)
+            Section {
+                Text(card.identifier)
+            }
+            Section {
+                List {
+                    Button("Add New") {
+                        
+                    }
+                    ForEach(card.transactions) { transaction in
+                        Text(transaction.identifier)
+                    }
+                }
+            }
         }
     }
 }
