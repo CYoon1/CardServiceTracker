@@ -16,8 +16,10 @@ struct TransactionDetailView: View {
             }
             Section("Cards") {
                 List {
-                    Button("Add New") {
-                        
+                    NavigationLink {
+                        TransactionAddEditView(transaction: transaction, save: { _ in }, delete: { _ in })
+                    } label: {
+                        Text("Add New")
                     }
                     ForEach(transaction.cards) { card in
                         Text(card.identifier)
