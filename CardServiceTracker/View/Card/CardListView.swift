@@ -18,7 +18,7 @@ struct CardListView: View {
             List {
                 ForEach(cards) { card in
                     NavigationLink {
-                        CardDetailView(card: card)
+                        CardAddEditView(card: card, save: save, delete: { _ in })
                     } label: {
                         CardRowView(card: card)
                     }

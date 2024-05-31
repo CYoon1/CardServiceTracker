@@ -18,8 +18,9 @@ struct TransactionAddEditView: View {
             Section {
                 TextField("Name", text: $transaction.identifier)
             }
-            Section {
+            Section("Cards") {
                 List {
+                    Text("List of Cards")
                     ForEach(transaction.cards) { card in
                         Text(card.identifier)
                     }

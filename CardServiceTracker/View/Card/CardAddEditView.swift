@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CardAddEditView: View {
     @Bindable var card: Card
@@ -18,8 +19,13 @@ struct CardAddEditView: View {
             Section {
                 TextField("Name", text: $card.identifier)
             }
-            Section {
+            Section("Add Service") {
                 List {
+                    NavigationLink {
+                        CardTransactionListView(update: addToCard)
+                    } label: {
+                        Text("Add Service")
+                    }
                     ForEach(card.transactions) { transaction in
                         Text(transaction.identifier)
                     }
@@ -41,6 +47,13 @@ struct CardAddEditView: View {
             }
         }
     }
+    
+    func addToCard(_ new: Set<Transaction>) {
+//        let oldTransactionSet = Set(card.transactions)
+//        let combinedSet = oldTransactionSet.union(new)
+        let combinedSet = Set(card.transactions).union(new)
+        card.transactions = Array(combinedSet)
+    }
 }
 
 #Preview {
@@ -48,4 +61,35 @@ struct CardAddEditView: View {
     return NavigationStack {
         CardAddEditView(card: test, save: { _ in }, delete: { _ in })
     }
+}
+
+struct CardTransactionListView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var transactions: [Transaction]
+    @State private var selection = Set<Transaction>()
+    var update: (Set<Transaction>) -> ()
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationView {
+            List(transactions, id: \.self, selection: $selection) { transaction in
+                Text(transaction.identifier)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        update(selection)
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                    }
+
+                }
+            }
+        }
+    }
+    
 }

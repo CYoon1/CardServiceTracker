@@ -18,7 +18,7 @@ struct TransactionListView: View {
             List {
                 ForEach(transactions) { transaction in
                     NavigationLink {
-                        TransactionDetailView(transaction: transaction)
+                        TransactionAddEditView(transaction: transaction, save: save, delete: { _ in })
                     } label: {
                         TransactionRowView(transaction: transaction)
                     }
