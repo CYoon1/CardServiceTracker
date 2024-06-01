@@ -19,9 +19,7 @@
 		D8BC9FC92C039ADF00872540 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FC82C039ADF00872540 /* MainView.swift */; };
 		D8BC9FCC2C039B0200872540 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FCB2C039B0200872540 /* CardRowView.swift */; };
 		D8BC9FCE2C039B3B00872540 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FCD2C039B3B00872540 /* CardListView.swift */; };
-		D8BC9FD02C039C2000872540 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FCF2C039C2000872540 /* CardDetailView.swift */; };
 		D8BC9FD42C039DE500872540 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FD32C039DE500872540 /* TransactionRowView.swift */; };
-		D8BC9FD62C039DEB00872540 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FD52C039DEB00872540 /* TransactionDetailView.swift */; };
 		D8BC9FD82C039DF200872540 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FD72C039DF200872540 /* TransactionListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,9 +37,7 @@
 		D8BC9FC82C039ADF00872540 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D8BC9FCB2C039B0200872540 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
 		D8BC9FCD2C039B3B00872540 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
-		D8BC9FCF2C039C2000872540 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		D8BC9FD32C039DE500872540 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
-		D8BC9FD52C039DEB00872540 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		D8BC9FD72C039DF200872540 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				D8BC9FCB2C039B0200872540 /* CardRowView.swift */,
-				D8BC9FCF2C039C2000872540 /* CardDetailView.swift */,
 				D8BC9FCD2C039B3B00872540 /* CardListView.swift */,
 				D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */,
 			);
@@ -129,7 +124,6 @@
 			children = (
 				D8BC9FD32C039DE500872540 /* TransactionRowView.swift */,
 				D8A11AD32C051BEA007A63EC /* TransactionAddEditView.swift */,
-				D8BC9FD52C039DEB00872540 /* TransactionDetailView.swift */,
 				D8BC9FD72C039DF200872540 /* TransactionListView.swift */,
 			);
 			path = Service;
@@ -205,10 +199,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BC9FD02C039C2000872540 /* CardDetailView.swift in Sources */,
 				D8BC9FB62C03964E00872540 /* ContentView.swift in Sources */,
 				D8BC9FCC2C039B0200872540 /* CardRowView.swift in Sources */,
-				D8BC9FD62C039DEB00872540 /* TransactionDetailView.swift in Sources */,
 				D8BC9FD42C039DE500872540 /* TransactionRowView.swift in Sources */,
 				D8BC9FC92C039ADF00872540 /* MainView.swift in Sources */,
 				D8BC9FB82C03964E00872540 /* Item.swift in Sources */,
