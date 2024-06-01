@@ -43,14 +43,11 @@ struct CardAddEditView: View {
                 } label: {
                     Text("Cancel")
                 }
-
             }
         }
     }
     
     func addToCard(_ new: Set<Transaction>) {
-//        let oldTransactionSet = Set(card.transactions)
-//        let combinedSet = oldTransactionSet.union(new)
         let combinedSet = Set(card.transactions).union(new)
         card.transactions = Array(combinedSet)
     }

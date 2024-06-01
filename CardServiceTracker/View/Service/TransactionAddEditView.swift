@@ -6,16 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TransactionAddEditView: View {
     @Bindable var transaction: Transaction
     var save: (Transaction) -> ()
     var delete: (Transaction) -> ()
     @Environment(\.dismiss) var dismiss
+    @State var showAddListOpen : Bool = false
     
     var body: some View {
         Form {
             Section {
+                NavigationLink {
+                    TransactionCardListView(update: addToTransaction)
+                } label: {
+                    Text("Add Card")
+                }
                 TextField("Name", text: $transaction.identifier)
             }
             Section("Cards") {
@@ -38,9 +45,13 @@ struct TransactionAddEditView: View {
                 } label: {
                     Text("Cancel")
                 }
-
             }
         }
+    }
+    
+    func addToTransaction(_ new: Set<Card>) {
+        let combinedSet = Set(transaction.cards).union(new)
+        transaction.cards = Array(combinedSet)
     }
 }
 
@@ -49,4 +60,34 @@ struct TransactionAddEditView: View {
     return NavigationStack {
         TransactionAddEditView(transaction: test, save: { _ in }, delete: { _ in })
     }
+}
+
+struct TransactionCardListView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var cards: [Card]
+    @State private var selection = Set<Card>()
+    var update: (Set<Card>) -> ()
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationView {
+            List(cards, id: \.self, selection: $selection) { card in
+                Text(card.identifier)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        update(selection)
+                        dismiss()
+                    } label: {
+                        Text("Save")
+                    }
+                }
+            }
+        }
+    }
+    
 }
