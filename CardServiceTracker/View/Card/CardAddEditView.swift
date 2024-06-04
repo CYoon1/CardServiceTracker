@@ -13,6 +13,7 @@ struct CardAddEditView: View {
     var save: (Card) -> ()
     var delete: (Card) -> ()
     @Environment(\.dismiss) var dismiss
+    @State var showAddListOpen : Bool = false
     
     var body: some View {
         Form {
@@ -20,14 +21,22 @@ struct CardAddEditView: View {
                 TextField("Name", text: $card.identifier)
             }
             Section("Add Service") {
-                List {
-                    NavigationLink {
-                        CardTransactionListView(update: addToCard)
-                    } label: {
-                        Text("Add Service")
-                    }
-                    ForEach(card.transactions) { transaction in
-                        Text(transaction.identifier)
+                if showAddListOpen {
+                    CardTransactionListView(update: addToCard, showAddListOpen: $showAddListOpen, currentlySelected: card.transactions)
+                } else {
+                    List {
+                        Button {
+                            showAddListOpen.toggle()
+                        } label: {
+                            Text("Edit List")
+                        }
+                        if card.transactions.isEmpty {
+                            Text("No Services on Record")
+                        } else {
+                            ForEach(card.transactions) { transaction in
+                                Text(transaction.identifier)
+                            }
+                        }
                     }
                 }
             }
@@ -47,9 +56,8 @@ struct CardAddEditView: View {
         }
     }
     
-    func addToCard(_ new: Set<Transaction>) {
-        let combinedSet = Set(card.transactions).union(new)
-        card.transactions = Array(combinedSet)
+    func addToCard(_ updated: Set<Transaction>) {
+        card.transactions = Array(updated)
     }
 }
 
@@ -65,28 +73,53 @@ struct CardTransactionListView: View {
     @Query private var transactions: [Transaction]
     @State private var selection = Set<Transaction>()
     var update: (Set<Transaction>) -> ()
-    @Environment(\.dismiss) var dismiss
+    @Binding var showAddListOpen: Bool
+    
+    var currentlySelected : [Transaction] = []
     
     var body: some View {
-        NavigationView {
-            List(transactions, id: \.self, selection: $selection) { transaction in
-                Text(transaction.identifier)
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    EditButton()
+        List {
+            HStack {
+                Button {
+                    update(selection)
+                    showAddListOpen = false
+                } label: {
+                    Text("Confirm")
                 }
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        update(selection)
-                        dismiss()
-                    } label: {
-                        Text("Save")
+                .buttonStyle(BorderedButtonStyle())
+                Spacer()
+                Button {
+                    showAddListOpen = false
+                } label: {
+                    Text("Cancel")
+                }.buttonStyle(BorderedButtonStyle())
+            }
+            ForEach(transactions) { transaction in
+                CardTransactionListRowView(transaction: transaction, isSelected: selection.contains(transaction))
+                    .onTapGesture {
+                        if selection.contains(transaction) {
+                            selection.remove(transaction)
+                        } else {
+                            selection.insert(transaction)
+                        }
                     }
-
-                }
             }
+        }
+        .onAppear {
+            selection = Set(currentlySelected)
         }
     }
     
+}
+
+struct CardTransactionListRowView: View {
+    var transaction : Transaction
+    var isSelected = false
+    
+    var body: some View {
+        HStack {
+            Image(systemName: isSelected ? "checkmark.circle" : "circle")
+            Text(transaction.identifier)
+        }
+    }
 }
