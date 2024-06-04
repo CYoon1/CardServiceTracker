@@ -31,7 +31,7 @@ struct TransactionAddEditView: View {
                             Text("Edit")
                         }
                         if transaction.cards.isEmpty {
-                            Text("List of Cards")
+                            Text("No Cards on Record")
                         } else {
                             ForEach(transaction.cards) { card in
                                 Text(card.identifier)
@@ -84,7 +84,7 @@ struct TransactionCardListView: View {
                 //                        dismiss()
                 showAddListOpen = false
             } label: {
-                Text("Save")
+                Text("Confirm")
             }
             ForEach(cards) { card in
                 TransactionCardListRowView(card: card, isSelected: selection.contains(card))
