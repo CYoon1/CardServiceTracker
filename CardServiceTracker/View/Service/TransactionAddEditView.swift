@@ -18,18 +18,25 @@ struct TransactionAddEditView: View {
     var body: some View {
         Form {
             Section {
-                NavigationLink {
-                    TransactionCardListView(update: addToTransaction)
-                } label: {
-                    Text("Add Card")
-                }
                 TextField("Name", text: $transaction.identifier)
             }
             Section("Cards") {
-                List {
-                    Text("List of Cards")
-                    ForEach(transaction.cards) { card in
-                        Text(card.identifier)
+                if showAddListOpen {
+                    TransactionCardListView(update: updateTransaction, showAddListOpen: $showAddListOpen, currentlySelected: transaction.cards)
+                } else {
+                    List {
+                        Button {
+                            showAddListOpen.toggle()
+                        } label: {
+                            Text("Edit")
+                        }
+                        if transaction.cards.isEmpty {
+                            Text("List of Cards")
+                        } else {
+                            ForEach(transaction.cards) { card in
+                                Text(card.identifier)
+                            }
+                        }
                     }
                 }
             }
@@ -49,9 +56,8 @@ struct TransactionAddEditView: View {
         }
     }
     
-    func addToTransaction(_ new: Set<Card>) {
-        let combinedSet = Set(transaction.cards).union(new)
-        transaction.cards = Array(combinedSet)
+    func updateTransaction(_ updated: Set<Card>) {
+        transaction.cards = Array(updated)
     }
 }
 
@@ -67,27 +73,44 @@ struct TransactionCardListView: View {
     @Query private var cards: [Card]
     @State private var selection = Set<Card>()
     var update: (Set<Card>) -> ()
-    @Environment(\.dismiss) var dismiss
+    @Binding var showAddListOpen: Bool
+    
+    var currentlySelected : [Card] = []
     
     var body: some View {
-        NavigationView {
-            List(cards, id: \.self, selection: $selection) { card in
-                Text(card.identifier)
+        List {
+            Button {
+                update(selection)
+                //                        dismiss()
+                showAddListOpen = false
+            } label: {
+                Text("Save")
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        update(selection)
-                        dismiss()
-                    } label: {
-                        Text("Save")
+            ForEach(cards) { card in
+                TransactionCardListRowView(card: card, isSelected: selection.contains(card))
+                    .onTapGesture {
+                        if selection.contains(card) {
+                            selection.remove(card)
+                        } else {
+                            selection.insert(card)
+                        }
                     }
-                }
             }
         }
+        .onAppear(perform: {
+            selection = Set(currentlySelected)
+        })
     }
+}
+
+struct TransactionCardListRowView: View {
+    var card: Card
+    var isSelected = false
     
+    var body: some View {
+        HStack {
+            Image(systemName: isSelected ? "checkmark.circle" : "circle")
+            Text(card.identifier)
+        }
+    }
 }
