@@ -25,10 +25,15 @@ struct TransactionAddEditView: View {
                     TransactionCardListView(update: updateTransaction, showAddListOpen: $showAddListOpen, currentlySelected: transaction.cards)
                 } else {
                     List {
-                        Button {
-                            showAddListOpen.toggle()
-                        } label: {
-                            Text("Edit")
+                        HStack {
+                            Spacer()
+                            Button {
+                                showAddListOpen.toggle()
+                            } label: {
+                                Text("Edit List")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            Spacer()
                         }
                         if transaction.cards.isEmpty {
                             Text("No Cards on Record")
@@ -79,12 +84,22 @@ struct TransactionCardListView: View {
     
     var body: some View {
         List {
-            Button {
-                update(selection)
-                //                        dismiss()
-                showAddListOpen = false
-            } label: {
-                Text("Confirm")
+            HStack {
+                Button {
+                    update(selection)
+                    showAddListOpen = false
+                } label: {
+                    Text("Confirm")
+                }
+                .buttonStyle(BorderedButtonStyle())
+                Spacer()
+                Button {
+                    showAddListOpen = false
+                } label: {
+                    Text("Cancel")
+                }
+                .buttonStyle(BorderedButtonStyle())
+                .tint(.red)
             }
             ForEach(cards) { card in
                 TransactionCardListRowView(card: card, isSelected: selection.contains(card))

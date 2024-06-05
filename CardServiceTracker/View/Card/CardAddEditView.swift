@@ -25,10 +25,16 @@ struct CardAddEditView: View {
                     CardTransactionListView(update: addToCard, showAddListOpen: $showAddListOpen, currentlySelected: card.transactions)
                 } else {
                     List {
-                        Button {
-                            showAddListOpen.toggle()
-                        } label: {
-                            Text("Edit List")
+                        HStack {
+                            Text(".").opacity(0.001)
+                            Spacer()
+                            Button {
+                                showAddListOpen.toggle()
+                            } label: {
+                                Text("Edit List")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            Spacer()
                         }
                         if card.transactions.isEmpty {
                             Text("No Services on Record")
@@ -38,6 +44,7 @@ struct CardAddEditView: View {
                             }
                         }
                     }
+//                    .listRowSeparator(.hidden)
                 }
             }
             Section {
@@ -92,7 +99,9 @@ struct CardTransactionListView: View {
                     showAddListOpen = false
                 } label: {
                     Text("Cancel")
-                }.buttonStyle(BorderedButtonStyle())
+                }
+                .buttonStyle(BorderedButtonStyle())
+                .tint(.red)
             }
             ForEach(transactions) { transaction in
                 CardTransactionListRowView(transaction: transaction, isSelected: selection.contains(transaction))
