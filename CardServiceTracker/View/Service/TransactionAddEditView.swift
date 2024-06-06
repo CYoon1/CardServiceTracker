@@ -43,6 +43,9 @@ struct TransactionAddEditView: View {
                             }
                         }
                     }
+                    .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+                        return 0
+                    }
                 }
             }
             Section {
@@ -111,6 +114,9 @@ struct TransactionCardListView: View {
                         }
                     }
             }
+        }
+        .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
+            return 0
         }
         .onAppear(perform: {
             selection = Set(currentlySelected)
