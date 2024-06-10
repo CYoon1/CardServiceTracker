@@ -25,8 +25,9 @@ struct TransactionListView: View {
                 }
                 .onDelete(perform: deleteTransactions)
             }
+            .navigationTitle("Services")
             .navigationDestination(isPresented: $showAddView) {
-                TransactionAddEditView(transaction: Transaction(id: "New", cards: []), save: add, delete: { _ in })
+                TransactionAddEditView(transaction: Transaction(id: "", cards: []), save: add, delete: { _ in })
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
