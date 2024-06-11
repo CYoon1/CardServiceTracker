@@ -62,6 +62,7 @@ struct TransactionAddEditView: View {
                 }
             }
         }
+        .navigationTitle("Service")
     }
     
     func updateTransaction(_ updated: Set<Card>) {

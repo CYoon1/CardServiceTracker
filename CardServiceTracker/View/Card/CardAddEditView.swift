@@ -63,6 +63,7 @@ struct CardAddEditView: View {
                 }
             }
         }
+        .navigationTitle("Card")
     }
     
     func addToCard(_ updated: Set<Transaction>) {

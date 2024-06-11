@@ -10,8 +10,6 @@
 		D8A11AD42C051BEA007A63EC /* TransactionAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A11AD32C051BEA007A63EC /* TransactionAddEditView.swift */; };
 		D8A11AD62C052F8D007A63EC /* CardAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */; };
 		D8BC9FB42C03964E00872540 /* CardServiceTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB32C03964E00872540 /* CardServiceTrackerApp.swift */; };
-		D8BC9FB62C03964E00872540 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB52C03964E00872540 /* ContentView.swift */; };
-		D8BC9FB82C03964E00872540 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FB72C03964E00872540 /* Item.swift */; };
 		D8BC9FBA2C03965000872540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BC9FB92C03965000872540 /* Assets.xcassets */; };
 		D8BC9FBD2C03965000872540 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BC9FBC2C03965000872540 /* Preview Assets.xcassets */; };
 		D8BC9FC52C03967900872540 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC9FC42C03967900872540 /* Card.swift */; };
@@ -28,8 +26,6 @@
 		D8A11AD52C052F8D007A63EC /* CardAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAddEditView.swift; sourceTree = "<group>"; };
 		D8BC9FB02C03964E00872540 /* CardServiceTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardServiceTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BC9FB32C03964E00872540 /* CardServiceTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardServiceTrackerApp.swift; sourceTree = "<group>"; };
-		D8BC9FB52C03964E00872540 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D8BC9FB72C03964E00872540 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D8BC9FB92C03965000872540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8BC9FBC2C03965000872540 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8BC9FC42C03967900872540 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -72,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				D8BC9FB32C03964E00872540 /* CardServiceTrackerApp.swift */,
-				D8BC9FB52C03964E00872540 /* ContentView.swift */,
 				D8BC9FCA2C039AE800872540 /* View */,
 				D8BC9FC32C03966700872540 /* Model */,
 				D8BC9FB92C03965000872540 /* Assets.xcassets */,
@@ -94,7 +89,6 @@
 			children = (
 				D8BC9FC42C03967900872540 /* Card.swift */,
 				D8BC9FC62C0396C600872540 /* Transaction.swift */,
-				D8BC9FB72C03964E00872540 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,11 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8BC9FB62C03964E00872540 /* ContentView.swift in Sources */,
 				D8BC9FCC2C039B0200872540 /* CardRowView.swift in Sources */,
 				D8BC9FD42C039DE500872540 /* TransactionRowView.swift in Sources */,
 				D8BC9FC92C039ADF00872540 /* MainView.swift in Sources */,
-				D8BC9FB82C03964E00872540 /* Item.swift in Sources */,
 				D8BC9FC72C0396C600872540 /* Transaction.swift in Sources */,
 				D8BC9FD82C039DF200872540 /* TransactionListView.swift in Sources */,
 				D8BC9FB42C03964E00872540 /* CardServiceTrackerApp.swift in Sources */,
@@ -347,6 +339,7 @@
 				DEVELOPMENT_TEAM = 2C89D7FYA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Payment Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -376,6 +369,7 @@
 				DEVELOPMENT_TEAM = 2C89D7FYA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Payment Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
